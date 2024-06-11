@@ -41,19 +41,25 @@ public class Main {
     them to the console.
     */
 
-    static void twoSmallestNums(int [] nums){
-
-        int smallest=nums[0];
-        int secondSmallest=nums[1];
-
-
-        for(int i=0;i<nums.length;i++){
-            if(nums[i]<secondSmallest && nums[i]>smallest) secondSmallest=nums[i];
-            else if(nums[i]>smallest && nums[i]<secondSmallest) smallest=nums[i];
+    static void twoSmallestNums(int[] nums) {
+        if (nums.length < 2) {
+            return;
         }
 
-        System.out.println("The smallest element of the given array is "+smallest);
-        System.out.println("The second smallest element of the given array is "+secondSmallest);
+        int smallest = Math.min(nums[0], nums[1]);
+        int secondSmallest = Math.max(nums[0], nums[1]);
+
+        for (int i=2; i<nums.length; i++) {
+            if (nums[i]<smallest) {
+                secondSmallest=smallest;
+                smallest=nums[i];
+            } else if (nums[i]<secondSmallest && nums[i]!= smallest) {
+                secondSmallest = nums[i];
+            }
+        }
+
+        System.out.println("The smallest element of the given array is " + smallest);
+        System.out.println("The second smallest element of the given array is " + secondSmallest);
     }
 
     //TASK 3
